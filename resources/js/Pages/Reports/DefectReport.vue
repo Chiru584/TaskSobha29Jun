@@ -5,6 +5,8 @@ import SearchAndExport from '@/Components/SearchAndExport.vue'
 import DefectTable from '@/Components/DefectTable.vue'
 
 const filters = ['Project', 'Division', 'Sub-Division', 'Activity', 'Sub-Activity', 'Defect Type', 'Year - 2025']
+
+defineProps({ reports: Array });
 </script>
 
 <template>
@@ -21,7 +23,7 @@ const filters = ['Project', 'Division', 'Sub-Division', 'Activity', 'Sub-Activit
           <FilterDropdown v-for="item in filters" :key="item" :label="item" />
         </div>
       </div>
-      <DefectTable />
+      <DefectTable :reports="reports"/>
       </div>
     </div>
   </AuthenticatedLayout>

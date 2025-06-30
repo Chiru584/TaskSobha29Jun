@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\DefectReportController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -19,9 +20,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::get('/defect-report', function () {
-    return Inertia::render('Reports/DefectReport');
-})->middleware(['auth', 'verified'])->name('defect-report');
+Route::get('/defect-report', [DefectReportController::class, 'index'])->middleware(['auth', 'verified'])->name('defect-report');
 
 
 Route::get('/defect-threshold', function () {

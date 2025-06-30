@@ -1,11 +1,7 @@
 <script setup>
-const rows = [
-  { sou: 'SOU 3', project: 'Sobha Seahaven', division: 'Finishing Division', sub: 'Paint', activity: 'Dry Area Floor', subActivity: 'Floor Tiling', type: 'UCM Leak', threshold: 200, count: 80 },
-  { sou: 'SOU 1', project: 'Sobha Seahaven', division: 'Finishing Division', sub: 'Tile Division', activity: 'Dry Area Floor', subActivity: 'Ceiling First coat', type: 'Glass Bend', threshold: 60, count: 40 },
-  { sou: 'SOU 1', project: 'The Crest', division: 'Finishing Division', sub: 'Paint', activity: 'Dry Area Floor', subActivity: 'Floor Tiling', type: 'UCM Leak', threshold: 200, count: 20 },
-  { sou: 'SOU 2', project: 'Sobha Hartland II', division: 'MEP Division', sub: 'Plumbing', activity: 'GI Box Fixing', subActivity: 'GI Box Fixing', type: 'Screw missing', threshold: 80, count: 50 },
-  { sou: 'SOU 2', project: 'Sobha Seahaven', division: 'Finishing Division', sub: 'Tile Division', activity: 'Dry Area Floor', subActivity: 'MS Bracket Fixing', type: 'Screw missing', threshold: 100, count: 30 }
-]
+
+defineProps({ reports: Array });
+
 </script>
 
 <template>
@@ -25,16 +21,16 @@ const rows = [
         </tr>
       </thead>
       <tbody>
-        <tr v-for="row in rows" :key="row.sou" class="border-b text-[#333333]">
+        <tr v-for="row in reports" :key="row.sou" class="border-b text-[#333333]">
           <td class="p-2.5">{{ row.sou }}</td>
           <td class="p-2.5">{{ row.project }}</td>
           <td class="p-2.5">{{ row.division }}</td>
-          <td class="p-2.5">{{ row.sub }}</td>
+          <td class="p-2.5">{{ row.sub_division }}</td>
           <td class="p-2.5">{{ row.activity }}</td>
-          <td class="p-2.5">{{ row.subActivity }}</td>
-          <td class="p-2.5">{{ row.type }}</td>
-          <td class="p-2.5">{{ row.threshold }}</td>
-          <td class="p-2.5">{{ row.count }}</td>
+          <td class="p-2.5">{{ row.sub_activity }}</td>
+          <td class="p-2.5">{{ row.defect_type }}</td>
+          <td class="p-2.5">{{ row.defect_threshold }}</td>
+          <td class="p-2.5">{{ row.yearly_count }}</td>
         </tr>
       </tbody>
     </table>
