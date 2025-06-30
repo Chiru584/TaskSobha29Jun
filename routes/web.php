@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\DefectReportController;
 use App\Http\Controllers\DefectThresholdController;
+use App\Http\Controllers\ActivityController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -26,9 +27,7 @@ Route::get('/defect-report', [DefectReportController::class, 'index'])->middlewa
 
 Route::get('/defect-threshold', [DefectThresholdController::class, 'index'])->middleware(['auth', 'verified'])->name('defect-threshold');
 
-Route::get('/activities', function () {
-    return Inertia::render('Reports/AllActivities');
-})->name('activities.index');
+Route::get('/activities', [ActivityController::class, 'index'])->name('activities.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

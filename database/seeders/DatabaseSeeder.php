@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(DefectReportSeeder::class);
         $this->call(DefectThresholdSeeder::class);
+        $this->call(ActivitySeeder::class);
     }
     
 }

@@ -2,46 +2,13 @@
 import { ref } from 'vue'
 import SubActivityRow from './SubActivityRow.vue'
 import { ChevronDown, ChevronUp } from 'lucide-vue-next'
+import { format } from 'date-fns';
 
-const activities = ref([
-  {
-    name: 'Site Preparation',
-    desc: 'Lorem Ipsum Lorem Ipsum',
-    count: 14,
-    time: '1 Dec 2023 | 11:00PM',
-    subActivities: [
-      {
-        name: 'Clearing and Grading',
-        desc: 'Lorem Ipsum Lorem Ipsum',
-        count: 45,
-        date: '18 Nov 2023 | 11:00PM'
-      },
-      {
-        name: 'Clearing and Grading',
-        desc: 'Lorem Ipsum Lorem Ipsum',
-        count: 45,
-        date: '18 Nov 2023 | 11:00PM'
-      }
-    ],
-    expanded: true
-  },
-  {
-    name: 'Foundation Construction',
-    desc: 'Lorem Ipsum Lorem Ipsum',
-    count: 14,
-    time: '1 Dec 2023 | 11:00PM',
-    subActivities: [],
-    expanded: false
-  },
-  {
-    name: 'Framing',
-    desc: 'Lorem Ipsum Lorem Ipsum',
-    count: 14,
-    time: '1 Dec 2023 | 11:00PM',
-    subActivities: [],
-    expanded: false
-  }
-])
+defineProps({ activities: Array });
+
+function formatDate(date) {
+  return format(new Date(date), 'd MMM yyyy | hh:mm a');
+}
 </script>
 
 <template>
@@ -62,9 +29,9 @@ const activities = ref([
           <!-- Parent Activity Row -->
           <tr class="border-b">
             <td class="p-2 font-medium">{{ activity.name }}</td>
-            <td class="p-2">{{ activity.desc }}</td>
+            <td class="p-2">{{ activity.description }}</td>
             <td class="p-2">{{ activity.count }}</td>
-            <td class="p-2">{{ activity.time }}</td>
+            <td class="p-2">{{ formatDate(activity.time) }}</td>
             <td class="p-2 text-center">
               <button @click="activity.expanded = !activity.expanded"
                     class="p-1 rounded hover:bg-gray-200 transition" >
