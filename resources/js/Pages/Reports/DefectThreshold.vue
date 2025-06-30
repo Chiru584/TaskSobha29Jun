@@ -5,6 +5,7 @@ import SearchFilterBar from '@/Components/ThresholdSearch.vue'
 import ThresholdTable from '@/Components/ThresholdTable.vue'
 
 const filters = ['Project', 'Division', 'Sub-Division', 'Activity', 'Sub-Activity', 'Severity', 'Control']
+defineProps({ thresholds: Array });
 </script>
 
 <template>
@@ -20,7 +21,7 @@ const filters = ['Project', 'Division', 'Sub-Division', 'Activity', 'Sub-Activit
           <FilterDropdown v-for="item in filters" :key="item" :label="item" />
           <button class="bg-black text-white px-4 py-2 rounded-lg">Filter</button>
         </div>
-        <ThresholdTable />
+        <ThresholdTable :thresholds="thresholds"/>
       </div>
     </div>
    </AuthenticatedLayout>
